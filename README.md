@@ -9,13 +9,11 @@ A new Flutter package for both android and iOS which helps developers in creatin
 [Example](https://github.com/ANaSHaKerr/video_walkthrough/tree/master/example/example_app.dart)
 
 ## Dimo Video
-<video controls  height="300em">
-
-    <source src="https://i.imgur.com/QdHkGOA.mp4"
-            type="video/mp4">
-
-    Sorry, your browser doesn't support embedded videos.
+<video height="300em" 
+src="src="https://i.imgur.com/QdHkGOA.mp4" 
+controls> Sorry, your browser doesn't support HTML5 <code>video</code>
 </video>
+
 
 ## Screenshots
 
