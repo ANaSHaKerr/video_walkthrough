@@ -7,11 +7,15 @@ import 'walkthrough.dart';
 
 
 class WelcomeScreen extends StatefulWidget {
-  final List<Walkthrough>? walkthroughList;
+  final List<Walkthrough> walkthroughList;
   final MaterialPageRoute? pageRoute;
-  final video , volume;
+  final String video , smallImage ;
+  final String? skipText, continueText, startText  ;
+  final TextStyle? skipStyle , continueStyle, startStyle;
+  final double? volume , videoScale , dotSize , smallImageSize;
+  final Color? smallImageColor, indicatorActiveColor ,  indicatorInActiveColor , continueBorderColor , startBtnColor;
 
-  const WelcomeScreen({ this.walkthroughList, this.pageRoute, this.video, this.volume});
+  const WelcomeScreen({required this.walkthroughList, this.pageRoute,required this.video, this.volume, this.videoScale,  this.indicatorActiveColor,  this.indicatorInActiveColor, this.dotSize, this.skipText, this.continueText, this.startText, this.skipStyle, this.continueStyle, this.startStyle, this.continueBorderColor, this.startBtnColor, this.smallImage = "", this.smallImageSize, this.smallImageColor});
   void skipPage(BuildContext context) {
     Navigator.push(context, pageRoute!);
   }
@@ -28,7 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   List<Widget> _buildIndicators() {
     List<Widget> wlist = [];
-    for (int i = 0; i < widget.walkthroughList!.length - 1; i++) {
+    for (int i = 0; i < widget.walkthroughList.length; i++) {
       wlist.add((i == _currentPage) ? _indicator(true) : _indicator(false));
     }
 
@@ -38,11 +42,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
-      height: 8.0,
-      width: 8.0,
+      height: widget.dotSize ?? 8.0,
+      width:widget.dotSize ?? 8.0,
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: isActive ? Colors.white : Colors.white54,
+          color: isActive ? widget.indicatorActiveColor ?? Colors.white : widget.indicatorActiveColor ?? Colors.white54,
           borderRadius: BorderRadius.all(Radius.circular(12.0))
       ),
     );
@@ -58,11 +62,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     _controller.jumpToPage(_currentPage + 1);
   }
   void _skipPage() {
-    _controller.jumpToPage(_currentPage = 2);
+    _controller.jumpToPage(_currentPage = widget.walkthroughList.length - 1);
   }
 
   void _sysTemUIConfig() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   }
 
   @override
@@ -90,6 +94,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Container(
         height: _size!.height,
         child: Background(
+          scale: widget.videoScale,
           video: widget.video,
           volume: widget.volume,
           childWidget: Container(
@@ -110,26 +115,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             margin: EdgeInsets.only(top: _appbarSize!),
             child: FlatButton(
               child: Text(
-                'Skip',
-                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,
+                widget.skipText ?? 'Skip',
+                style:widget.skipStyle ?? const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,
                     fontSize: 18),
               ),
               onPressed: () => _skipPage(),
             ),
           ),
-          Image.asset("assets/blackLogo.png",
-            color: Colors.white,
-            width: 100,),
+          widget.smallImage.isNotEmpty ? Image.asset(widget.smallImage  ,
+            color:widget.smallImageColor ?? Colors.white,
+            width:widget.smallImageSize ??  100,) : Container(),
 
           Container(
             height: _size!.height / 1.6,
+
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: PageView(
                 controller: _controller,
                 onPageChanged: (value) => _setPageState(value),
                 physics: ClampingScrollPhysics(),
-                children:widget.walkthroughList!,
+                children:widget.walkthroughList,
               ),
             ),
           ),
@@ -149,22 +155,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ButtonTheme(
                       minWidth: 200,
                       height: 45,
-                      child: (_currentPage != widget.walkthroughList!.length - 1)
+                      child: (_currentPage != widget.walkthroughList.length - 1)
                           ? FlatButton(
-                        shape: StadiumBorder(side: BorderSide(color: Colors.white), ),
+                        shape: StadiumBorder(side: BorderSide(color: widget.continueBorderColor ?? Colors.white), ),
                         child: Text(
-                          'Continue',
-                          style: TextStyle(color: Colors.white),
+                          widget.continueText ??  'Continue',
+                          style:widget.continueStyle ?? const TextStyle(color: Colors.white),
                         ),
                         onPressed: () => _moveToNextPage(),
                       ) : FlatButton(
-                        shape: RoundedRectangleBorder(
+                        color: widget.startBtnColor ?? Colors.indigoAccent,
+                        shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
                               Radius.circular(24.0)),
                         ),
                         child: Text(
-                          'Start',
-                          style: TextStyle(color: Colors.white),
+                          widget.startText ??'Start',
+                          style:widget.startStyle ?? TextStyle(color: Colors.white),
                         ),
                         onPressed: () => widget.skipPage(context),
                       ),

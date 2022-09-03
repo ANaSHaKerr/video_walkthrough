@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class Background extends StatefulWidget {
-  final Widget childWidget;
-  final String video;
-  final double volume;
+  final Widget? childWidget;
+  final String? video;
+  final double? volume , scale;
 
-  const Background({ required this.childWidget, required this.video, required this.volume});
+  const Background({ required this.childWidget,  this.video,  this.volume,  this.scale});
 
   @override
   _BackgroundState createState() => _BackgroundState();
@@ -18,9 +18,9 @@ class _BackgroundState extends State<Background> {
 
   void _createVideo() async{
     if (_playerController == null) {
-      _playerController = VideoPlayerController.asset(widget.video)
+      _playerController = VideoPlayerController.asset(widget.video!)
         ..initialize().then((value) => playerListener);
-      _playerController!.setVolume(widget.volume);
+      _playerController!.setVolume(widget.volume ?? 1);
       _playerController!.setLooping(true);
     }
 
@@ -58,19 +58,18 @@ class _BackgroundState extends State<Background> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
 
     return Stack(
       children: <Widget>[
         Transform.scale(
-          scale: 1.4, //scale as your video size
+          scale: widget.scale ?? 1 , //scale as your video size
           child: (_playerController != null) ?
           VideoPlayer(
             _playerController!,
           )
               : Container(),
         ),
-        widget.childWidget,
+        widget.childWidget!,
       ],
     );
   }

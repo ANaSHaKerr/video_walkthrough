@@ -9,7 +9,7 @@ class Walkthrough extends StatefulWidget {
 
   Walkthrough(
       {this.title,
-      this.content, this.titleStyle, this.contentStyle,
+        this.content, this.titleStyle, this.contentStyle,
       });
 
   @override
@@ -46,30 +46,22 @@ class WalkthroughState extends State<Walkthrough>
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      padding: const EdgeInsets.all(20.0),
-      child:  Material(
-        animationDuration:  Duration(milliseconds: 500),
-        elevation: 2.0,
-        borderRadius:  BorderRadius.all(Radius.circular(5.0)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
 
-            Text(
-              widget.title,
-              style: widget.titleStyle,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              widget.content,
-              style: widget.contentStyle,
-            )
-          ],
+        Text(
+          widget.title,
+          style: widget.titleStyle,
         ),
-      ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          widget.content,
+          style: widget.contentStyle,
+        )
+      ],
     );
   }
 }
