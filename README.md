@@ -9,10 +9,13 @@ A new Flutter package for both android and iOS which helps developers in creatin
 [Example](https://github.com/ANaSHaKerr/video_walkthrough/tree/master/example/example_app.dart)
 
 ## Dimo Video
-<video height="300em" 
-src="src="https://i.imgur.com/QdHkGOA.mp4" 
-controls> Sorry, your browser doesn't support HTML5 <code>video</code>
+<video width="640" height="480" src="https://archive.org/download/Popeye_forPresident/Popeye_forPresident_512kb.mp4" controls>
+  Sorry, your browser doesn't support HTML5 <code>video</code>, but you can
+  download this video from the <a href="https://archive.org/details/Popeye_forPresident" target="_blank">Internet Archive</a>.
 </video>
+
+
+Read more: https://html.com/tags/video/#ixzz7dmrdKLTX
 
 
 ## Screenshots
