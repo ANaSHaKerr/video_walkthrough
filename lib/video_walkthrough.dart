@@ -6,7 +6,7 @@ import 'bg_video.dart';
 import 'walkthrough.dart';
 
 
-class WelcomeScreen extends StatefulWidget {
+class VideoWalkThrough extends StatefulWidget {
   final List<Walkthrough> walkthroughList;
   final MaterialPageRoute? pageRoute;
   final String video , smallImage ;
@@ -15,16 +15,16 @@ class WelcomeScreen extends StatefulWidget {
   final double? volume , videoScale , dotSize , smallImageSize;
   final Color? smallImageColor, indicatorActiveColor ,  indicatorInActiveColor , continueBorderColor , startBtnColor;
 
-  const WelcomeScreen({required this.walkthroughList, this.pageRoute,required this.video, this.volume, this.videoScale,  this.indicatorActiveColor,  this.indicatorInActiveColor, this.dotSize, this.skipText, this.continueText, this.startText, this.skipStyle, this.continueStyle, this.startStyle, this.continueBorderColor, this.startBtnColor, this.smallImage = "", this.smallImageSize, this.smallImageColor});
+  const VideoWalkThrough({required this.walkthroughList, this.pageRoute,required this.video, this.volume, this.videoScale,  this.indicatorActiveColor,  this.indicatorInActiveColor, this.dotSize, this.skipText, this.continueText, this.startText, this.skipStyle, this.continueStyle, this.startStyle, this.continueBorderColor, this.startBtnColor, this.smallImage = "", this.smallImageSize, this.smallImageColor});
   void skipPage(BuildContext context) {
     Navigator.push(context, pageRoute!);
   }
 
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _VideoWalkThroughState createState() => _VideoWalkThroughState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _VideoWalkThroughState extends State<VideoWalkThrough> {
   Size? _size;
   double? _appbarSize;
   int _currentPage = 0;

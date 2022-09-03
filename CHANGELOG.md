@@ -1,3 +1,3 @@
-## 0.0.1
+## 3-9-2022 0.0.2
 
-* TODO: Describe initial release.
+# First Launch of Package

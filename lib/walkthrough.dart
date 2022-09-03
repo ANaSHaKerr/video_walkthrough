@@ -52,14 +52,20 @@ class WalkthroughState extends State<Walkthrough>
 
         Text(
           widget.title,
-          style: widget.titleStyle,
+          style: widget.titleStyle ?? const TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
           widget.content,
-          style: widget.contentStyle,
+          style: widget.contentStyle ?? const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w500),
         )
       ],
     );

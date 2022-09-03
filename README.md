@@ -1,39 +1,89 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# video_walkthrough
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+A new Flutter package for both android and iOS which helps developers in creating animated video walkthrough of their app.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Show some :heart: and star the repo to support the project
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+[Example](https://github.com/ANaSHaKerr/video_walkthrough/tree/master/example/example_app.dart)
 
-```dart
-const like = 'sample';
+## Dimo Video
+<img src="https://i.imgur.com/QdHkGOA.mp4" height="300em" />
+
+
+## Screenshots
+
+<img src="https://i.imgur.com/fgX7PUU.jpg" height="300em" /> <img src="https://i.imgur.com/rdjSeAn.jpg" height="300em" />
+
+
+To use this package :
+
+* add the dependency to your [pubspec.yaml](https://github.com/ANaSHaKerr/video_walkthrough/blob/master/pubspec.yaml) file.
+
+```yaml
+  dependencies:
+    flutter:
+      sdk: flutter
+    video_walkthrough:
 ```
 
-## Additional information
+### How to use
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+import 'package:flutter/material.dart';
+
+import 'video_walkthrough.dart';
+import 'walkthrough.dart';
+
+
+void main() {
+  runApp( MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  final List<Walkthrough> list = [
+    Walkthrough(
+      title: "Title 1",
+      content: "Content 1",
+      titleStyle: TextStyle(color: Colors.white),
+      contentStyle:  TextStyle(color: Colors.white),
+    ),
+    Walkthrough(
+      title: "Title 2",
+      content: "Content 2",
+      titleStyle: TextStyle(color: Colors.white),
+      contentStyle:  TextStyle(color: Colors.white),
+    ),
+    Walkthrough(
+      title: "Title 3",
+      content: "Content 3",
+      titleStyle: TextStyle(color: Colors.white),
+      contentStyle:  TextStyle(color: Colors.white),
+    ),
+
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home:  WelcomeScreen(
+
+        videoScale: 1.0,
+        video: "assets/video.mp4",
+        volume: 0.0,
+        walkthroughList: list,
+        pageRoute: MaterialPageRoute(builder: (context) =>  MyApp()),
+      ),
+    );
+  }
+}
+
+```
+
+
+[Github](https://github.com/ANaSHaKerr) ([Linkedin](https://www.linkedin.com/in/anashaker/)) ([Freelance](https://khamsat.com/user/ana_shaker))
+
+

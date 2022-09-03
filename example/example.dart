@@ -24,7 +24,7 @@ class TestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  WelcomeScreen(
+    return  VideoWalkThrough(
 
       video: "assets/video.mp4",
       volume: 0,
