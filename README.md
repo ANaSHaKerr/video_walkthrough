@@ -9,10 +9,8 @@ A new Flutter package for both android and iOS which helps developers in creatin
 [Example](https://github.com/ANaSHaKerr/video_walkthrough/tree/master/example/example_app.dart)
 
 ## Dimo Video
-<blockquote class="imgur-embed-pub" lang="en" data-id="bpgN2Wz" data-context="false" ><a href="//imgur.com/bpgN2Wz"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
-
-Read more: https://html.com/tags/video/#ixzz7dmrdKLTX
+https://user-images.githubusercontent.com/88486643/188253208-8b785e73-1e5c-48b2-b59f-04865b00244c.mp4
 
 
 ## Screenshots
