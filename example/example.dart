@@ -30,6 +30,9 @@ class TestScreen extends StatelessWidget {
       volume: 0,
       walkthroughList: list,
       pageRoute: MaterialPageRoute(builder: (context) =>  TestScreen()),
+
+
+
     );
   }
 }
